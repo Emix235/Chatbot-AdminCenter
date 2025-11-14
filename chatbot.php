@@ -13,7 +13,7 @@ if (!isset($_SESSION['id_adm'])) {
 
 // Cargar datos desde CSV en lugar de MySQL
 $candidatos = [];
-$csv_url = "http://localhost/Chatbot-AdminCenter-JessicaMoralesAguilar/candidatos.csv";
+$csv_url = "http://localhost/Chatbot-AdminCenter/candidatos.csv";
 
 // Función para cargar datos del CSV
 function cargarCandidatosDesdeCSV($url)

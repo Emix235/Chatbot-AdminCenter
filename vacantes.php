@@ -3,8 +3,8 @@
 include 'modelo/consultas_menu.php';
 
 // URLs de los archivos CSV
-$csv_vacantes_url = "http://localhost/Chatbot-AdminCenter-JessicaMoralesAguilar/puestos.csv";
-$csv_candidatos_url = "http://localhost/Chatbot-AdminCenter-JessicaMoralesAguilar/candidatos.csv";
+$csv_vacantes_url = "http://localhost/Chatbot-AdminCenter/puestos.csv";
+$csv_candidatos_url = "http://localhost/Chatbot-AdminCenter/candidatos.csv";
 
 // Función para leer el CSV desde la URL
 function leerCSVDesdeURL($url)

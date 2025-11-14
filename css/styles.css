@@ -1,0 +1,1004 @@
+/* Aqui intente separar el html y el body, para colocarle a cada uno propiedades distintas
+A pesar de modifcar ambas etiquetas desde css y la consola no he tenido exito */
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+  text-decoration: none;
+  min-height: 100vh;
+}
+
+/* A pesar de utilizar !important como ultimo recurso
+No se ha podido modificar la altura del body */
+/* @media (max-width: 1300px) and (min-width: 784px) {
+  body {
+    height: 80% !important;
+    min-height: 50vh !important;
+  }
+} */
+
+h1 {
+  color: #002B45;
+  font-size: 40px;
+  font-weight: bold;
+}
+.titleRe{
+  text-align: center;
+ top: 5%;
+}
+
+.contIn {
+  margin-top: 6%;
+  margin-left: 10%;
+}
+
+.contUs {
+  margin-top: 40px;
+  font-size: 20px;
+}
+
+.txtUsu,
+.txtMail,
+.txtpsw {
+  width: 30%;
+  height: 40px;
+  padding: 12px 20px;
+  margin: 8px 0;
+  border: none;
+  display: inline-block;
+  background-color: #f3f3f3;
+  box-sizing: border-box;
+  border-radius: 20px;
+  text-decoration: none;
+  outline: none;
+  transition: opacity 0.2s ease;
+  opacity: 1;
+}
+
+.txtMail-rest {
+  width: 100%;
+  height: 40px;
+  padding: 12px 20px;
+  margin: 8px 0;
+  border: none;
+  display: inline-block;
+  background-color: #f3f3f3;
+  box-sizing: border-box;
+  border-radius: 20px;
+  text-decoration: none;
+  outline: none;
+  transition: opacity 0.2s ease;
+  opacity: 1;
+}
+
+/* Estilo del link ¿Olvidaste tu contraseña y del registro */
+.container-btn-sesion,
+.container-btn-registro {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Mantiene el botón centrado */
+  width: 30%;
+  margin-top: 15px;
+  gap: 15px;
+  position: relative; /* Permite posicionamiento interno */
+}
+
+.link-restablecer,
+.link-registro,
+.link-miembro {
+  text-decoration: none;
+  font-weight: 600;
+  background: #023047;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: transform 0.2s ease-in-out;
+  font-size: 14px;
+  display: inline-block;
+  white-space: nowrap;
+  width: fit-content;
+  text-align: left;
+  margin-bottom: 0px;
+  align-self: flex-start; /* Lo alinea a la izquierda */
+  margin-left: 0; /* Se asegura que esté pegado a la izquierda */
+}
+.link-miembro{
+  margin-top: 10px;
+}
+
+.link-restablecer:hover {
+  transform: scale(1.05);
+}
+
+.link-registro:hover {
+  transform: scale(1.05);
+}
+
+.link-miembro:hover {
+  transform: scale(1.05);
+}
+.btnSesion {
+  background-color: #3CA6E5;
+  color: #f3f3f3;
+  padding: 10px 16px;
+  margin: 10px 0;
+  border: none;
+  cursor: pointer;
+  width: 60%;
+  border-radius: 40px;
+  font-size: 16px;
+  transition: all 0.2s ease-in-out;
+}
+
+/* efecto buttons */
+button:hover {
+  opacity: 0.8;
+}
+
+.titleIn {
+  font-size: 30px;
+  text-align: left;
+  width: 80%;
+  max-width: 600px;
+  /* Máximo ancho para pantallas grandes */
+}
+
+.vector {
+  max-width: 100%;
+  display: flex;
+}
+
+.imgLogo {
+    position: absolute;
+    top: 70px;
+    right: 145px;
+    width: 25%; /* Reducido de 40% a 25% */
+    max-width: 300px; /* Tamaño máximo en píxeles */
+    border-right: 0;
+    margin: 0 auto;
+    object-fit: contain;
+}
+
+/* Modal de alerta */
+
+.modal-alert {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  max-width: 90%; /* ahora se adapta al tamaño de la pantalla */
+  min-width: 200px;
+  border-top: 5px solid #ffb703;
+  word-wrap: break-word; /* rompe palabras largas */
+  overflow-wrap: break-word; /* compatibilidad */
+}
+
+.alert-message {
+  font-size: 16px;
+  color: #333;
+  display: block;
+  margin-bottom: 15px;
+  word-break: break-word; /* rompe correos largos */
+  overflow-wrap: break-word;
+}
+
+/* Botón de cierre */
+.alert-close {
+  background-color: #ffb703;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 0.3s ease;
+}
+
+.alert-close:hover {
+  opacity: 0.7;
+}
+
+/* Modal del login */
+.modal-rest{
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Contenedor del modal */
+.modal-content1 {
+  background: white;
+  width: 400px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.modal-content-rest {
+  background: white;
+  width: 400px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.submit-button-form {
+  background: #ffb703;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background 0.3s;
+  font-size: 16px;
+  margin: 15px auto 0 auto; /* margen superior y auto en los lados */
+  text-align: center;
+  display: block; /* ← necesario para que funcione el margin auto */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Encabezado del modal */
+.modal-header-rest{
+  background: #e0e0e0;
+  padding: 15px;
+  font-size: 18px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Botón de cierre */
+.close {
+  font-size: 20px;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.close:hover {
+  color: #ffb703;
+}
+
+/* Cuerpo del modal */
+.modal-body-rest {
+  padding: 20px;
+  text-align: center;
+}
+
+.modal-body input {
+  width: 90%;
+  padding: 10px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  text-align: center;
+  font-size: 16px;
+}
+
+.modal-body button {
+  background: #ffb703;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background 0.3s;
+  font-size: 16px;
+  margin-top: 15px;
+}
+
+.modal-body button:hover {
+  background: #ffb703;
+}
+
+/* .container-logo {
+    position: absolute;
+    
+    margin: 0;
+    right: 70px;
+    
+    width:50%;
+    height: 100%;
+    
+    text-align: center;
+    display: flex;
+    justify-content: flex-end;
+    transform: translateX(-5%);
+
+} */
+
+.txtGii {
+  color: #fff;
+  font-size: 27px;
+  font-weight: bold;
+  position: absolute;
+  top: calc(50px + 65%);
+  right: 70px;
+  width: 30%;
+  text-align: center;
+}
+
+.imgVect {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-right: 0;
+  z-index: -1;
+  width: 45%;
+  height: 100%;
+}
+
+/*Estilo para formulario de resgistro */
+ .container-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* O min-height si prefieres */
+}
+
+.registro-container {
+  padding: 40px;
+  border-radius: 10px;
+  width: 90%;            /* Más ancho, adaptativo */
+  max-width: 500px;     /* Límite para pantallas grandes */
+  margin-left: 5%;      /* Alineado a la izquierda */
+  margin-right: auto;    
+}
+
+.registro-container h2 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.registro-container p {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #999;
+}
+
+.progressbar {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.progress-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  flex: 1;
+}
+
+.progress-step .icon {
+  width: 40px;
+  height: 40px;
+  background: #ccc;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.progress-step.active .icon {
+  background: #3CA6E5;
+}
+
+.progress-step .label {
+  font-size: 12px;
+  color: #999;
+}
+
+.progress-step.active .label {
+  color: #3CA6E5;
+}
+
+.progressbar::before {
+  content: "";
+  position: absolute;
+  top: 20px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #eee;
+  z-index: 0;
+}
+
+.form-step {
+  display: none;
+}
+
+.form-step.active {
+  display: block;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group input, .form-group textarea, .form-group select{
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  display: inline-block;
+  background-color: #f3f3f3;
+  box-sizing: border-box;
+  border-radius: 20px;
+  text-decoration: none;
+  outline: none;
+  transition: opacity 0.2s ease;
+  opacity: 1;
+}
+
+.btnRegistro,
+.btnNext {
+  background: #3CA6E5;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  float: right;
+}
+
+.btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.btnPrev {
+  float: left;
+  background: #ccc;
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  border: none;
+}
+
+.buttons {
+  overflow: hidden;
+  margin-top: 20px;
+}
+
+.movil {
+  display: none;
+}
+
+.texto-escritorio {
+  position: absolute;
+   bottom: 190px; /* Ajusta según el tamaño de tu texto */
+  left: 70%;
+  font-size: clamp(1rem, 1.5vw, 1.4rem);
+  color: #f3f3f3;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+}
+
+.form-wrapper {
+  display: inline-flex;
+    justify-content: center;
+    height: 100vh;
+    padding-left: 5%;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+
+
+/* Consulta para controlar los margins de los inputs de login y registro */
+@media (max-width: 1300px) and (min-width: 784px) {
+  .contUs {
+    margin-top: 0;
+  }
+  .form-label {
+    margin-top: 2.5%;
+  }
+  .container-btn-sesion,
+  .container-btn-registro {
+    margin-top: 18px;
+  }
+
+   .container-form{
+    width: 95%;
+    max-width: 500px;
+   }
+
+   .registro-container {
+    width: 85%;
+    max-width: 500px;
+    margin-left: 3%;
+    padding: 30px;
+  }
+
+  .progress-step .label {
+    font-size: 11px;
+  }
+
+  .form-group input, .form-group textarea {
+    font-size: 15px;
+  }
+    .imgLogo {
+      left: 67%;
+      top:18%;
+    }
+ 
+
+  .texto-escritorio {
+  position: absolute;
+   bottom: 250px; /* Ajusta según el tamaño de tu texto */
+  left: 70%;
+  font-size: clamp(1rem, 1.5vw, 1.4rem);
+  color: #f3f3f3;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+}
+}
+
+@media (max-width: 1100px) {
+  .imgVect {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-right: 0;
+    z-index: -1;
+    width: 50%;
+    height: 100%;
+  }
+
+  .vector {
+    max-width: 100%;
+    display: flex;
+  }
+  .imgLogo {
+    position: absolute;
+    top: 50px;
+    left: 63%;
+    border-right: 0;
+    margin: 0 auto;
+    width: 35%;
+    height: 65%;
+  }
+
+  .movil {
+  display: none;
+}
+.texto-escritorio {
+  position: absolute;
+   bottom: 180px; /* Ajusta según el tamaño de tu texto */
+  left: 70%;
+  font-size: clamp(1rem, 1.5vw, 1.4rem);
+  color: #f3f3f3;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+}
+}
+
+/* Cambiar el tamaño de fuente de los inputs
+para que no se corte el texto */
+
+@media (max-width: 1148px) {
+  .txtUsu,
+  .txtMail,
+  .txtpsw {
+    font-size: 16px;
+  }
+  .movil {
+  display: none;
+}
+
+.texto-escritorio {
+  position: absolute;
+   bottom: 280px; /* Ajusta según el tamaño de tu texto */
+  left: 68%;
+  font-size: clamp(1rem, 1.5vw, 1.4rem);
+  color: #f3f3f3;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+}
+}
+
+@media (max-width: 958px) {
+  .txtUsu,
+  .txtMail,
+  .txtpsw {
+    font-size: 14px;
+  }
+  .movil {
+  display: none;
+}
+
+.texto-escritorio {
+  position: absolute;
+   bottom: 280px; /* Ajusta según el tamaño de tu texto */
+  left: 63%;
+  font-size: clamp(1rem, 1.5vw, 1.4rem);
+  color: #f3f3f3;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+}
+
+ .imgLogo {
+  left: 60%;
+  }
+}
+
+@media (max-width: 826px) {
+  .txtUsu,
+  .txtMail,
+  .txtpsw {
+    font-size: 14px;
+    
+  }
+
+ .movil {
+  display: none;
+}
+
+ .imgLogo {
+    left: 60%;
+  }
+   
+
+.texto-escritorio {
+  position: absolute;
+   bottom: 280px; /* Ajusta según el tamaño de tu texto */
+  left: 63%;
+  font-size: clamp(1rem, 1.5vw, 1.4rem);
+  color: #f3f3f3;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+}
+  
+}
+
+@media (max-width: 780px) {
+  body,
+  html {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(
+      180deg,
+      rgb(	142, 202, 230) 36%,
+      rgb(2, 48, 71) 100%
+    );
+
+    
+  }
+
+  .login-container {
+    width: 80%;
+    height: 65%;
+    margin: auto;
+    margin-top: 25%;
+    background-color: rgba(255, 255, 255, 0.322);
+    border-radius: 15px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+
+  .contIn {
+    width: 80%;
+    height: 100%;
+    margin: auto;
+    margin-top: 10px;
+  }
+
+  .container-logo {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    /* background-color: #FFE6A7;
+        border-radius: 50%; */
+    width: 130px;
+    height: 130px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .imgLogo {
+    width: 70px;
+    height: 70px;
+    left: 20px;
+  }
+
+  .vector .imgVect {
+    display: none;
+  }
+
+    .escritorio {
+    display: none;
+  }
+
+  .movil {
+    display: block;
+  }
+
+  .txtUsu,
+  .txtMail,
+  .txtpsw {
+    width: 100%;
+    background-color: #ffffffda;
+
+    box-shadow: 0 2px 4px 0 rgba(78, 77, 77, 0.2),
+      0 3px 10px 0 rgba(80, 78, 78, 0.19);
+    font-size: 20px;
+  }
+
+  .container-btn-sesion,
+  .container-btn-registro {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+  }
+  .link-registro,
+  .link-restablecer{
+    margin-left: auto;
+    font-size: 14px;
+  }
+
+   .link-miembro {
+    margin-left: auto;
+    font-size: 14px;
+    margin-top: 13px;
+  }
+
+  .container-btn-sesion,
+  .container-btn-registro {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .btnSesion {
+    width: 50%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: auto;
+    margin-top: 20px;
+  }
+  .btnRegistro {
+    width: 35%;
+    margin: auto;
+    margin-top: 1px;
+  }
+
+  .titleIn {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .txtGii {
+    display: none;
+  }
+
+  .container-form {
+    width: 100%;
+    padding: 40px;
+    
+  }
+
+  .registro-container {
+    width: 95%;
+    max-width: 700px; /* Aumenta el ancho en tabletas */
+    padding: 30px;
+     background-color: rgba(255, 255, 255, 0.322);
+    border-radius: 15px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-top: 5%;
+  }
+
+  .progress-step .label {
+    font-size: 10px;
+  }
+
+  .form-group input, .form-group textarea {
+    font-size: 14px;
+  }
+
+  .buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .btnPrev, .btnNext {
+    float: none;
+  }
+}
+
+@media (max-width: 480px) {
+  body,
+  html {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(
+      180deg,
+      rgb(	142, 202, 230) 36%,
+      rgb(2, 48, 71) 100%
+    );
+  }
+
+  .login-container {
+    width: 80%;
+    height: 70%;
+    margin: auto;
+    margin-top: 40%;
+    background-color: rgba(255, 255, 255, 0.322);
+    border-radius: 15px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+
+  .contIn {
+    width: 80%;
+    height: 100%;
+    margin: auto;
+    margin-top: 20px;
+  }
+
+  .container-logo {
+    position: absolute;
+
+    left: 50%;
+    transform: translateX(-50%);
+    /* background-color: #FFE6A7;
+        border-radius: 50%; */
+    width: 130px;
+    height: 130px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .imgLogo {
+    width: 70px;
+    height: 70px;
+    left: 20px;
+  }
+
+  .titleIn {
+    width: 100%;
+
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .btnSesion {
+    width: 60%;
+    font-size: 13px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .escritorio {
+    display: none;
+  }
+
+  .movil {
+    display: block;
+    left: 20%;
+  }
+
+  .txtUsu,
+  .txtMail,
+  .txtpsw {
+    width: 100%;
+    background-color: #ffffff;
+    font-size: 16px;
+    box-shadow: 0 2px 4px 0 rgba(78, 77, 77, 0.2),
+      0 3px 10px 0 rgba(80, 78, 78, 0.19);
+  }
+
+  .link-registro,
+  .link-restablecer {
+    font-size: 13px;
+    display: block;
+    margin-left: auto;
+    text-align: right;
+  }
+
+
+  .titleIn {
+    width: 100%;
+
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .btnRegistro {
+    width: 45%;
+    margin-top: 1px;
+    text-align: center;
+  }
+
+  .txtGii {
+    /* font-size: 15px;
+        margin-top: 0;
+        margin-right: 30%;
+        color: #FFB703;
+        text-align: right;
+        position: absolute;
+        top: 40px;
+        right: 1%;
+        width: 100%; */
+    display: none;
+  }
+
+  .registro-container {
+    width: 100%;
+    padding: 20px;
+    border-radius: 10px;
+  }
+
+  .progressbar {
+    gap: 10px;
+  }
+
+  .progress-step {
+
+    align-items: center;
+    gap: 10px;
+  }
+
+  .progressbar::before {
+    display: none;
+  }
+
+  .progress-step .icon {
+    width: 30px;
+    height: 30px;
+    font-size: 14px;
+  }
+
+  .progress-step .label {
+    display: none;
+  }
+
+  .form-group input, .form-group textarea {
+    font-size: 13px;
+  }
+
+  .btnPrev, .btnNext {
+    float: none;
+  }
+}

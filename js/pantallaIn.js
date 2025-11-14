@@ -1,0 +1,185 @@
+// Seleccionar el input y el contenedor del texto del chatbot
+const txtSaludo = document.querySelector('#inp_saludo');
+const divCopiaSaludo = document.getElementById('txt-chatbot');
+
+//txtSaludo.addEventListener('keyup', () => {
+   // divCopiaSaludo.innerHTML = txtSaludo.value;
+//});
+
+//  // Función para ajustar el contenido del saludo
+ txtSaludo.addEventListener('keyup', () => {
+  divCopiaSaludo.innerHTML = txtSaludo.value;
+   // Guardar el saludo en el Local Storage
+ 
+   localStorage.setItem('saludoChatbot', txtSaludo.value); });
+
+// // Recuperar el saludo desde el Local Storage 
+document.addEventListener('DOMContentLoaded', () => {
+    const saludoGuardado = localStorage.getItem('saludoChatbot');
+    if (saludoGuardado) {
+         txtSaludo.value = saludoGuardado;
+         divCopiaSaludo.innerHTML = saludoGuardado;
+}
+    const colorTexto = localStorage.getItem('colorTexto') || '#000000';
+    const colorSecundario= localStorage.getItem('colorSecundario') || '#b6b6b6';
+    const colorAcento = localStorage.getItem('colorAcento') || '#383838';
+
+    const iconos = document.querySelectorAll('.chatbot-min svg, .chatbot-close svg');
+    iconos.forEach(svg => {
+        svg.style.color = colorTexto;
+    });
+    // Aplicar color al texto del chatbot
+
+    // Aplicar color a todos los botones del chatbot
+    const botonesChatbot = document.querySelectorAll('.chatbot-button');
+    botonesChatbot.forEach(boton => {
+        boton.style.backgroundColor = colorSecundario;
+        boton.style.color = colorTexto;
+
+        // Hover dinámico para efecto visual
+        boton.addEventListener('mouseenter', () => {
+            boton.style.backgroundColor = colorAcento;
+        });
+        boton.addEventListener('mouseleave', () => {
+            boton.style.backgroundColor = colorSecundario;
+        });
+    });
+ });
+
+
+
+// Actualizar botones del chatbot al escribir en los inputs
+function actualizarBotonChatbot(input, boton) {
+    boton.textContent = input.value || 'Nuevo tema'; // Usar el valor del input o texto por defecto
+}
+
+// Función para crear y agregar un nuevo botón al chatbot
+function crearBotonChatbot(input) {
+    const chatbotButtonsContainer = document.getElementById('chatbot-buttons');
+    const boton = document.createElement('button');
+    boton.className = 'chatbot-button';
+    actualizarBotonChatbot(input, boton); // Establecer texto inicial
+    chatbotButtonsContainer.appendChild(boton);
+    
+    // Actualizar el botón en tiempo real
+    input.addEventListener('input', () => actualizarBotonChatbot(input, boton));
+}
+
+// Inicializar los botones del chatbot para los inputs existentes
+document.querySelectorAll('.inp-conversa').forEach(input => {
+    crearBotonChatbot(input);
+});
+
+function agregarTema() {
+    const listaTemas = document.getElementById('listaTemas');
+    const temasActuales = listaTemas.querySelectorAll('.tema-item').length;
+    const maxTemas = 5;
+    const errorMensaje = document.getElementById('errorMensaje');
+
+    if (temasActuales >= maxTemas) {
+        // Mostrar mensaje de error
+        errorMensaje.style.display = 'block';
+        return; // Salir de la función si ya hay 5 temas
+    }
+
+    // Ocultar mensaje de error si se está agregando un nuevo tema
+    errorMensaje.style.display = 'none';
+
+    // Crear nuevo elemento li
+    const nuevoTema = document.createElement('li');
+    nuevoTema.className = 'tema-item';
+
+    // Crear el input y botón de borrar
+    const nuevoInput = document.createElement('input');
+    nuevoInput.type = 'text';
+    nuevoInput.name = 'inp-conversa';
+    nuevoInput.className = 'inp-conversa';
+    nuevoInput.placeholder = 'Nuevo tema de conversación';
+    nuevoInput.required = true;
+
+    const btnBorrar = document.createElement('button');
+    btnBorrar.className = 'btn-borrar';
+    btnBorrar.innerHTML = '<img src="img/trash.png" width="20" alt="Delete Topic">';
+    btnBorrar.onclick = function () {
+        eliminarTema(btnBorrar);
+    };
+
+    // Añadir el input y el botón de borrar al nuevo tema
+    nuevoTema.appendChild(nuevoInput);
+    nuevoTema.appendChild(btnBorrar);
+
+    // Añadir el nuevo tema a la lista
+    listaTemas.appendChild(nuevoTema);
+
+    // Crear un nuevo botón del chatbot
+    crearBotonChatbot(nuevoInput);
+}
+
+// Función para eliminar un tema de conversación
+function eliminarTema(btn) {
+    const temaItem = btn.parentElement;
+    temaItem.remove();
+
+    // Actualizar los botones del chatbot
+    const chatbotButtonsContainer = document.getElementById('chatbot-buttons');
+    chatbotButtonsContainer.innerHTML = ''; // Limpiar los botones actuales
+    document.querySelectorAll('.inp-conversa').forEach(input => {
+        crearBotonChatbot(input);
+    });
+
+    // Ocultar mensaje de error si se elimina un tema y el número de temas es menor a 5
+    const temasActuales = document.querySelectorAll('.tema-item').length;
+    if (temasActuales < 5) {
+        document.getElementById('errorMensaje').style.display = 'none';
+    }
+}
+
+//Objeto con el que los datos se van a guardar
+document.addEventListener("DOMContentLoaded", function () {
+    const btnGuardar = document.getElementById("btnGuardarMensaje");
+
+    btnGuardar.addEventListener("click", function (event) {
+        event.preventDefault(); 
+
+        // Obtener id_chatbot desde localStorage
+        const id_chatbot = localStorage.getItem("id_chatbot");
+        if (!id_chatbot) {
+              Swal.fire({
+        icon: 'warning',
+        title: 'Atención',
+        text: 'Para generar el chatbot necesitas al menos guardar la configuración de estilo.',
+        confirmButtonText: 'Entendido',
+        showCloseButton: true,
+        confirmButtonColor: '#ffb703'
+
+  });
+  return;
+        }
+
+        //Objeto con el que los datos se van a guardar
+        const datosMensajeInicial = {
+            id_chatbot: parseInt(id_chatbot),
+            inp_saludo: document.getElementById('inp_saludo').value,
+            inp_conversa1: document.getElementById('inp_conversa1').value,
+            inp_conversa2: document.getElementById('inp_conversa2').value,
+            inp_conversa3: document.getElementById('inp_conversa3').value
+        };
+
+        // Envía los datos al archivo PHP mediante fetch
+        fetch('modelo/guardar_datos.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                seccion: 'mensaje_inicial', // Seccion donde se almacenaran los datos
+                datos: datosMensajeInicial 
+            })
+        })
+        .then(response => response.json())
+        .catch(err => {
+             console.error("Error al guardar en base de datos", err);
+            alert("Error de red o del servidor.");
+        });
+    });
+});

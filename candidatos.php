@@ -3,8 +3,8 @@
 include 'modelo/consultas_menu.php';
 
 // URLs de los archivos CSV
-$csv_vacantes_url = "http://localhost/Chatbot-AdminCenter-JessicaMoralesAguilar/puestos.csv";
-$csv_candidatos_url = "http://localhost/Chatbot-AdminCenter-JessicaMoralesAguilar/candidatos.csv";
+$csv_vacantes_url = "http://localhost/Chatbot-AdminCenter/puestos.csv";
+$csv_candidatos_url = "http://localhost/Chatbot-AdminCenter/candidatos.csv";
 
 // Capturar parámetros desde la URL
 $id_requisicion = $_GET['id_requisicion'] ?? 0;
